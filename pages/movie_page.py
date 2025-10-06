@@ -151,11 +151,11 @@ with col1:
         logger.info(f"Number of similar movies found: {len(similar_movies)}")
         similar_movies = [(movieId, similarity, links_helper.get_imdb_id(movieId)) for movieId, similarity in similar_movies]
 
-        for i, (movieId, similarity, imdb_id) in enumerate(similar_movies[:12]):
-            if i % 4 == 0:
-                cols = st.columns(4)
+        for i, (movieId, similarity, imdb_id) in enumerate(similar_movies[:10]):
+            if i % 5 == 0:
+                cols = st.columns(5)
 
-            with cols[i % 4]:
+            with cols[i % 5]:
                 movie_title = movie_helper.movies_df[movie_helper.movies_df['movieId'] == movieId]['title'].values[0]
                 st.image(get_image(imdb_id, movieId, links_helper), width=150, caption=f"**{movie_title}** (Movie ID: {movieId}) - Similarity: {similarity:.2f}")
                 # st.badge(movie_title)

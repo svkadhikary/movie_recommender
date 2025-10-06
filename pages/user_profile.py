@@ -49,7 +49,8 @@ with col1:
         i = 0
         for genre, row in user_vec_df.head().iterrows():
             with cols_i[i]:
-                st.write(f"**{genre}**:{row['Genre score']}")
+                # st.write(f"**{genre}**:{row['Genre score']}")
+                st.metric(label=f"**{genre}**", value=f"{row['Genre score']}")
                 i += 1
     except Exception as e:
         logger.error(f"Error fetching user vector::: {e}")

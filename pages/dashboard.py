@@ -94,14 +94,14 @@ with col1:
     st.write(f"Here are some recommendations based on your profile using **{model_option}**. :sparkles:")
     # display recommendations
     try:
-        recommendations = predict_recommendations(userId, model_option, N=8)
+        recommendations = predict_recommendations(userId, model_option, N=10)
         st.subheader("Top Movie Recommendations for You:")
 
         for i, (movieId, score, imdb) in enumerate(recommendations):
-            if i % 4 == 0:
-                cols = st.columns(4)
-            
-            with cols[i % 4]:
+            if i % 5 == 0:
+                cols = st.columns(5)
+
+            with cols[i % 5]:
                 movie_title = movie_helper.movies_df[movie_helper.movies_df['movieId'] == movieId]['title'].values[0]
                 # st.write(f"**{movie_title}** (Movie ID: {movieId}) - Predicted Score: {score:.2f}")
                 st.image(get_image(imdb, movieId, links_helper), width=150, caption=f"**{movie_title}** (Movie ID: {movieId}) - Predicted Score: {score:.2f}")
